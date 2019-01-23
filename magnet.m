@@ -5,8 +5,8 @@ m1=1.674927471e-27; %kg
 mu=1.91304273*5.05078343e-27; %J/T neutron magnetic moment
 
 
-G=32000; %Tesla per m^2 %as in Farago article
-lambda=14.4*1e-10; %meters %as in Farago article
+G=40000; %Tesla per m^2 %as in Farago article
+lambda=13*1e-10; %meters %as in Farago article
 v=3961.5/(lambda*1e10); %meters per sec
 %v1=h/(m1*lambda);
 alpha=1; %divergence in degrees

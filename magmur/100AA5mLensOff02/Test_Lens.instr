@@ -1,0 +1,187 @@
+/*****************************************************************************
+*         McStas instrument definition URL=http://www.mcstas.org
+*
+* Instrument: Test_Lens
+*
+* %Identification
+* Written by: E. Farhi/C. Monzat
+* Date: Dec 2009.
+* Origin: ILL
+* %INSTRUMENT_SITE: Tests_optics
+*
+* Demonstrate focusing effect of refractive lenses
+*
+* %Description
+*
+* Very simple setup with 30 stacked lenses which focus a cold neutron,
+* non diverging beam (ideal case). A set of PSD monitors is positioned
+* around the focusing point to show the beam spot.
+*
+* %Parameters
+* lambda: [Angs]     Source wavelength
+* position_PSD: [m]  Distance from last lens to first monitor
+*
+* %Link
+*
+* %End
+****************************************************************************/
+DEFINE INSTRUMENT Test_Lens(lambda=10,position_PSD=8.2,r=100, PHI=1e-3, Delta_Rho=0.6, sigma_abs=0.5)
+
+TRACE
+
+COMPONENT base=Progress_bar() at (0,0,0) ABSOLUTE
+
+COMPONENT source1 = Source_div(
+  xwidth=0.0026, yheight=0.0026,
+  focus_aw= 0.00001, focus_ah= 0.00001,
+  lambda0=lambda, dlambda=0.00001,gauss=0)
+AT (0,0,.001) relative PREVIOUS
+
+COMPONENT sample = Sans_spheres(
+  R=r, Phi=PHI, Delta_rho=Delta_Rho, sigma_abs=sigma_abs,
+  xwidth=0.0026, yheight=0.0026, zdepth=0.005, focus_xw=0.17, focus_yh=0.17, target_index=1)
+   AT (0,0,0.2) RELATIVE PREVIOUS
+EXTEND
+%{
+	if (!SCATTERED) ABSORB;
+%}
+
+/*COMPONENT slit = Slit(
+    radius=0.025)
+AT (0, 0, 5-1e-4) RELATIVE PREVIOUS
+
+COMPONENT L11=Lens(r1=0.025,r2=0.025,thickness=0.0005,
+  density=12.148,weight=62.3018,sigma_coh=11.74,sigma_inc=0,sigma_abs=0,
+  radius=0.025,p_interact=0.01,focus_aw=10,focus_ah=10)
+AT (0,0,5) RELATIVE sample
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS
+COMPONENT COPY(L11) = COPY (L11)
+   AT (0,0,0.0071987) RELATIVE PREVIOUS*/
+
+COMPONENT PSD_mon002 = Monitor_nD(
+    xwidth=0.1, yheight = 0.1, options="x y per cm2",bins=100,restore_neutron=1)
+  AT (0, 0, 0.02) RELATIVE PREVIOUS
+
+
+COMPONENT PSD_mon = Monitor_nD(
+    xwidth=0.1, yheight = 0.1, options="x y per cm2",bins=100,restore_neutron=1)
+  AT (0, 0, 0.2) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT PSDrad1 = PSD_monitor_rad(
+    filename = "psd1.dat", filename_av = "psd1_av.dat", rmax = 0.05)
+  AT (0, 0, 1e-3) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)( xwidth=1, yheight = 1)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)
+AT (0, 0, 1) RELATIVE PREVIOUS
+
+COMPONENT COPY(PSD_mon) = COPY(PSD_mon)(xwidth=0.5, yheight=0.5, bins=100, options="x y per cm2")
+AT (0, 0, 14.8) RELATIVE PSD_mon
+
+COMPONENT PSDrad = PSD_monitor_rad(
+    filename = "psd2.dat", filename_av = "psd2_av.dat", rmax = 0.1)
+  AT (0, 0, 1e-3) RELATIVE PREVIOUS
+
+
+
+END

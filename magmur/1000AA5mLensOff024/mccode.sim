@@ -1,0 +1,564 @@
+McStas simulation description file for Test_Lens.
+Date:    Fri Dec 14 08:58:30 2018
+Program: McStas 2.4.1 - Jun. 26, 2017
+
+begin instrument: Test_Lens
+  File: 1000AA5mLensOff024\mccode
+  Source: Test_Lens.instr
+  Parameters:  lambda(double) position_PSD(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1000AA5mLensOff024
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.4.1 - Jun. 26, 2017
+  Instrument: Test_Lens.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1544775778
+  Directory: 1000AA5mLensOff024
+  Param: lambda=10
+  Param: position_PSD=8.2
+  Param: r=1000
+  Param: PHI=0.001
+  Param: Delta_Rho=0.6
+  Param: sigma_abs=0.5
+end simulation
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon002
+  position: 0 0 0.221
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon002_1544767110.x_y
+  statistics: X0=-0.000245104; dX=0.00148141; Y0=0.000280902; dY=0.00147503;
+  signal: Min=0; Max=5.35672e-050; Mean=1.75016e-053;
+  values: 1.75016e-049 6.29627e-050 9.99329e+006
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.15 0.15 -0.15 0.15
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad002
+  position: 0 0 0.222
+  title: PSD monitor radial sum
+  Ncount: 10000000
+  filename: psd002.dat
+  statistics: X0=0.00100651; dX=0.000195227;
+  signal: Min=4.22444e-053; Max=4.64295e-047; Mean=1.57512e-048;
+  values: 1.57512e-046 5.66667e-047 98364
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 5e-005 0.01005
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad002
+  position: 0 0 0.222
+  title: PSD monitor radial average
+  Ncount: 10000000
+  filename: psd002_av.dat
+  statistics: X0=0.000960485; dX=0.000204703;
+  signal: Min=6.75719e-048; Max=6.42564e-041; Mean=2.75335e-042;
+  values: 2.75335e-040 9.38797e-041 98364
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 5e-005 0.01005
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon
+  position: 0 0 0.422
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_1544767110.x_y
+  statistics: X0=-0.00024687; dX=0.00104666; Y0=-4.86642e-005; dY=0.00105648;
+  signal: Min=0; Max=3.95297e-049; Mean=1.57507e-052;
+  values: 1.57507e-048 5.66674e-049 28534
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad02
+  position: 0 0 0.423
+  title: PSD monitor radial sum
+  Ncount: 10000000
+  filename: psd02.dat
+  statistics: X0=0.00113381; dX=0.000744984;
+  signal: Min=0; Max=3.95262e-047; Mean=1.57296e-048;
+  values: 1.57296e-046 5.66975e-047 906
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 5e-005 0.01005
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad02
+  position: 0 0 0.423
+  title: PSD monitor radial average
+  Ncount: 10000000
+  filename: psd02_av.dat
+  statistics: X0=0.000772726; dX=0.000510849;
+  signal: Min=0; Max=1.06305e-040; Mean=3.46389e-042;
+  values: 3.46389e-040 1.52542e-040 906
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 5e-005 0.01005
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_8
+  position: 0 0 1.423
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_8_1544767110.x_y
+  statistics: X0=-0.00145687; dX=0.00344801; Y0=-0.00100235; dY=0.00349149;
+  signal: Min=0; Max=3.95262e-049; Mean=1.573e-052;
+  values: 1.573e-048 5.66963e-049 943
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_9
+  position: 0 0 2.423
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_9_1544767110.x_y
+  statistics: X0=-0.00252727; dX=0.00543782; Y0=-0.0021383; dY=0.00541335;
+  signal: Min=0; Max=3.95262e-049; Mean=1.56773e-052;
+  values: 1.56773e-048 5.67641e-049 283
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_10
+  position: 0 0 3.423
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_10_1544767110.x_y
+  statistics: X0=-0.00354367; dX=0.00693881; Y0=-0.0032124; dY=0.00693248;
+  signal: Min=0; Max=3.95262e-049; Mean=1.55907e-052;
+  values: 1.55907e-048 5.68907e-049 119
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_11
+  position: 0 0 4.423
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_11_1544767110.x_y
+  statistics: X0=-0.00478787; dX=0.00847294; Y0=-0.00450947; dY=0.00830574;
+  signal: Min=0; Max=3.95262e-049; Mean=1.55007e-052;
+  values: 1.55007e-048 5.70412e-049 68
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_12
+  position: 0 0 5.423
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_12_1544767110.x_y
+  statistics: X0=-0.00593806; dX=0.010068; Y0=-0.00565918; dY=0.00930783;
+  signal: Min=0; Max=3.95262e-049; Mean=1.53838e-052;
+  values: 1.53838e-048 5.72665e-049 39
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad1
+  position: 0 0 5.424
+  title: PSD monitor radial sum
+  Ncount: 10000000
+  filename: psd1.dat
+  statistics: X0=0.0135922; dX=0.00784998;
+  signal: Min=0; Max=3.95262e-047; Mean=1.53004e-048;
+  values: 1.53004e-046 5.73813e-047 31
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 0.00025 0.05025
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad1
+  position: 0 0 5.424
+  title: PSD monitor radial average
+  Ncount: 10000000
+  filename: psd1_av.dat
+  statistics: X0=0.0102517; dX=0.0057802;
+  signal: Min=0; Max=1.86394e-042; Mean=4.86942e-044;
+  values: 4.86942e-042 2.35564e-042 31
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 0.00025 0.05025
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_14
+  position: 0 0 6.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_14_1544767110.x_y
+  statistics: X0=-0.00711159; dX=0.0115303; Y0=-0.0065975; dY=0.0102171;
+  signal: Min=0; Max=3.95262e-049; Mean=1.52678e-052;
+  values: 1.52678e-048 5.73983e-049 30
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_15
+  position: 0 0 7.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_15_1544767110.x_y
+  statistics: X0=-0.00808555; dX=0.0126648; Y0=-0.00823446; dY=0.0109582;
+  signal: Min=0; Max=3.95262e-049; Mean=1.51284e-052;
+  values: 1.51284e-048 5.75882e-049 21
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_16
+  position: 0 0 8.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_16_1544767110.x_y
+  statistics: X0=-0.00931994; dX=0.0138194; Y0=-0.00944335; dY=0.0120637;
+  signal: Min=0; Max=3.95262e-049; Mean=1.49983e-052;
+  values: 1.49983e-048 5.77349e-049 14
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_17
+  position: 0 0 9.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_17_1544767110.x_y
+  statistics: X0=-0.0103574; dX=0.0153815; Y0=-0.0105435; dY=0.0133915;
+  signal: Min=0; Max=3.95262e-049; Mean=1.49826e-052;
+  values: 1.49826e-048 5.76793e-049 11
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_18
+  position: 0 0 10.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_18_1544767110.x_y
+  statistics: X0=-0.0115945; dX=0.017049; Y0=-0.0118441; dY=0.0148867;
+  signal: Min=0; Max=3.95262e-049; Mean=1.49826e-052;
+  values: 1.49826e-048 5.76793e-049 11
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_19
+  position: 0 0 11.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_19_1544767110.x_y
+  statistics: X0=-0.0141775; dX=0.0146098; Y0=-0.0136964; dY=0.0155328;
+  signal: Min=0; Max=3.95262e-049; Mean=1.4456e-052;
+  values: 1.4456e-048 5.74497e-049 9
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_20
+  position: 0 0 12.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_20_1544767110.x_y
+  statistics: X0=-0.0157222; dX=0.0162991; Y0=-0.0151919; dY=0.0171273;
+  signal: Min=0; Max=3.95262e-049; Mean=1.4456e-052;
+  values: 1.4456e-048 5.74497e-049 9
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_21
+  position: 0 0 13.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_21_1544767110.x_y
+  statistics: X0=-0.0136267; dX=0.0355523; Y0=-0.0126474; dY=0.0359222;
+  signal: Min=0; Max=3.95262e-051; Mean=1.5726e-054;
+  values: 1.5726e-050 5.67015e-051 800
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.5 0.5 -0.5 0.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_22
+  position: 0 0 14.424
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_22_1544767110.x_y
+  statistics: X0=-0.0157174; dX=0.017273; Y0=-0.0173957; dY=0.0137114;
+  signal: Min=0; Max=3.95262e-049; Mean=1.23757e-052;
+  values: 1.23757e-048 5.60247e-049 6
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_2d(100, 100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSD_mon_23
+  position: 0 0 15.222
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSD_mon_23_1544767110.x_y
+  statistics: X0=-0.0158644; dX=0.033586; Y0=-0.0163441; dY=0.0327886;
+  signal: Min=0; Max=1.58105e-050; Mean=6.24634e-054;
+  values: 6.24634e-050 2.27396e-050 148
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.25 0.25 -0.25 0.25
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad
+  position: 0 0 15.223
+  title: PSD monitor radial sum
+  Ncount: 10000000
+  filename: psd2.dat
+  statistics: X0=0.0375075; dX=0.0185772;
+  signal: Min=0; Max=3.95262e-047; Mean=1.50529e-048;
+  values: 1.50529e-046 5.77279e-047 13
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 0.0005 0.1005
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Dec 14 08:58:57 2018 (1544767137)
+  type: array_1d(100)
+  Source: Test_Lens (Test_Lens.instr)
+  component: PSDrad
+  position: 0 0 15.223
+  title: PSD monitor radial average
+  Ncount: 10000000
+  filename: psd2_av.dat
+  statistics: X0=0.0297479; dX=0.0150649;
+  signal: Min=0; Max=3.06868e-043; Mean=8.19115e-045;
+  values: 8.19115e-043 3.96774e-043 13
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 0.0005 0.1005
+  variables: r I I_err N
+end data
